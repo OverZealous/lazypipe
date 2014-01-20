@@ -7,6 +7,8 @@ Lazypipe allows you to create an immutable, lazily-initialized pipeline.  It's d
 
 This module returns a function that can be used to start building a lazypipe.  Individual steps are added via the `.pipe()` method.  At any point, a new lazypipe can be built by adding to an existing one, without affecting the previous lazypipe.  Lazypipes can even be used as steps within another lazypipe.
 
+Once the partial pipeline is ready to use, call the last result from `.pipe()` directly as a function (e.g.: `.pipe()()`).
+
 Usage
 -----
 
@@ -19,6 +21,8 @@ Then create lazypipes like so:
 ```js
 // Example usage within a gulpfile
 var lazypipe = require('lazypipe');
+
+...
 
 // initialize a lazypipe
 var jsHintTasks = lazypipe()
@@ -76,7 +80,7 @@ API
 
 Initializes a lazypipe.  Returns a function that can be used to create the pipeline.  The returned function has a function (`pipe`) which can be used to create new lazypipes with an additional step.
 
-### `lazypipe.pipe(stream|fn, args...)`
+### `lazypipe().pipe(stream|fn, args...)`
 
 Creates a new lazy pipeline with all the previous steps, and the new step added to the end.  Returns the new lazypipe.
 
