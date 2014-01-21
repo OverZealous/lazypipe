@@ -17,18 +17,32 @@ describe('lazypipe', function() {
 		stream5 = mockstream();
 	});
 
-	describe('basics', function() {
+	describe('Basics', function() {
+		
+		it('should handle stream creation', function() {
+			var pipeline = lazypipe();
+			pipeline = pipeline.pipe(stream1).pipe(stream2).pipe(stream3);
+			stream1.created.should.be.false;
+			stream2.created.should.be.false;
+			stream3.created.should.be.false;
+			stream4.created.should.be.false;
+
+			var pipelineInstance = pipeline();
+			stream1.created.should.be.true;
+			stream2.created.should.be.true;
+			stream3.created.should.be.true;
+			stream4.created.should.be.false;
+		});
+		
 		it('should handle a simple stream', function() {
 			var pipeline = lazypipe();
 			pipeline.should.be.a.Function;
 			pipeline.pipe.should.be.a.Function;
 			pipeline = pipeline.pipe(stream1);
-			stream1.created.should.be.false;
 			stream1.data.should.have.length(0);
 
 			var pipelineInstance = pipeline();
 			pipelineInstance.on.should.be.a.Function;
-			stream1.created.should.be.true;
 			stream1.data.should.have.length(0);
 
 			pipelineInstance.write(1);
@@ -39,19 +53,13 @@ describe('lazypipe', function() {
 		it('should handle multiple streams', function() {
 			var pipeline = lazypipe();
 			pipeline = pipeline.pipe(stream1).pipe(stream2).pipe(stream3);
-			stream1.created.should.be.false;
 			stream1.data.should.have.length(0);
-			stream2.created.should.be.false;
 			stream2.data.should.have.length(0);
-			stream3.created.should.be.false;
 			stream3.data.should.have.length(0);
 
 			var pipelineInstance = pipeline();
-			stream1.created.should.be.true;
 			stream1.data.should.have.length(0);
-			stream2.created.should.be.true;
 			stream2.data.should.have.length(0);
-			stream3.created.should.be.true;
 			stream3.data.should.have.length(0);
 
 			pipelineInstance.write(1);
@@ -86,6 +94,31 @@ describe('lazypipe', function() {
 			stream3.data.should.eql([21]);
 			stream4.data.should.eql([24]);
 			stream5.data.should.eql([33]);
+		});
+		
+	});
+	
+	describe('Error Handling', function() {
+		
+		it("should throw errors when piped with no stream", function() {
+			(function() {
+				var pipeline = lazypipe();
+				pipeline.pipe();
+			}).should.throw();
+		});
+		
+		it("should throw errors when piped with a non-function", function() {
+			(function() {
+				var pipeline = lazypipe();
+				pipeline.pipe("hello");
+			}).should.throw();
+		});
+		
+		it("should throw errors when built with no streams", function() {
+			(function() {
+				var pipeline = lazypipe();
+				pipeline();
+			}).should.throw();
 		});
 
 	});

@@ -7,6 +7,9 @@ var combine = require('stream-combiner');
 function lazypipe() {
 	var createPipeline = function(tasks) {
 		var build = function() {
+				if(tasks.length === 0) {
+					throw new Error("Tried to build a pipeline with no pipes!");
+				}
 				return combine.apply(null, tasks.map(function(t) {
 					return t.task.apply(null, t.args);
 				}));

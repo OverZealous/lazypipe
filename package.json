@@ -1,7 +1,7 @@
 {
   "name": "lazypipe",
   "description": "Use to create an immutable, lazily initialized pipeline from a series of streams.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/OverZealous/lazypipe",
   "repository": {
     "type": "git",
@@ -43,6 +43,6 @@
   "bugs": {
     "url": "https://github.com/OverZealous/lazypipe/issues"
   },
-  "_id": "lazypipe@0.1.1",
+  "_id": "lazypipe@0.1.2",
   "_from": "lazypipe@*"
 }
