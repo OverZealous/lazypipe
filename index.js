@@ -18,13 +18,13 @@ function lazypipe() {
 			if(!task) {
 				throw new Error("Invalid call to lazypipe().pipe(): no stream specified");
 			} else if(typeof task !== 'function') {
-				throw new Error("Invalid call to lazypipe().pipe(): stream is not a function");
+				throw new Error("Invalid call to lazypipe().pipe(): argument is not a function.\n    Did you call the function directly? (e.g.: pipe(foo()) [incorrect] instead of pipe(foo) [correct])");
 			}
 			return createPipeline(tasks.concat({
 				task: task,
 				args: Array.prototype.slice.call(arguments, 1)
 			}));
-		}
+		};
 		return build;
 	};
 	return createPipeline([]);

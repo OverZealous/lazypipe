@@ -26,7 +26,7 @@ var lazypipe = require('lazypipe');
 
 // initialize a lazypipe
 var jsHintTasks = lazypipe()
-    // adding a pipeline step, notice the stream has not been initialized!
+    // adding a pipeline step, notice the stream function has not been called!
     .pipe(jshint)
     // adding a step with an argument
     .pipe(jshint.reporter, 'jshint-stylish');
@@ -80,16 +80,25 @@ API
 
 Initializes a lazypipe.  Returns a function that can be used to create the pipeline.  The returned function has a function (`pipe`) which can be used to create new lazypipes with an additional step.
 
-### `lazypipe().pipe(stream|fn, args...)`
+### `lazypipe().pipe(fn, [args...])`
 
 Creates a new lazy pipeline with all the previous steps, and the new step added to the end.  Returns the new lazypipe.
 
-* `stream` or `fn` - a stream initializer or function to call when the pipeline is created later.  You can provide your own custom functions if necessary.
-* `args` - Any remaining arguments are saved and passed into `stream` or `fn` when the pipeline is created.
+* `fn` - a stream creation function to call when the pipeline is created later.  You can either provide existing functions (such as gulp plugins), or provide your own custom functions if you want to manipulate the stream before creation.
+* `args` - Any remaining arguments are saved and passed into `fn` when the pipeline is created.
 
-### `lazypipe()()`  *"Create"*
+The arguments allows you to pass in configuration arguments when the pipeline is created, like this:
 
-Calling the result of `pipe()` as a function creates a pipeline at that time.  This can be used multiple times, and can even be called if the lazypipe was added to for other purposes.
+```js
+var pipeline = lazypipe().pipe(jsHint, jsHintOptions);
+
+// now, when gulp.src().pipe(pipeline()) is called later, it's as if you did:
+gulp.src().pipe(jsHint(jsHintOptions));
+```
+
+### `lazypipe()()`  *"create"*
+
+Calling the result of `pipe()` as a function creates a pipeline at that time.  This can be used multiple times, and can even be called if the lazypipe was used to create different pipelines.
 
 It returns a stream created using `stream-combiner`, where all the internal steps are processed sequentially, and the final result is passed on.
 
