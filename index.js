@@ -5,23 +5,23 @@
 var combine = require('stream-combiner');
 
 function lazypipe() {
-	var createPipeline = function(tasks) {
+	var createPipeline = function(steps) {
 		var build = function() {
-				if(tasks.length === 0) {
+				if(steps.length === 0) {
 					throw new Error("Tried to build a pipeline with no pipes!");
 				}
-				return combine.apply(null, tasks.map(function(t) {
+				return combine.apply(null, steps.map(function(t) {
 					return t.task.apply(null, t.args);
 				}));
 			};
-		build.pipe = function(task) {
-			if(!task) {
+		build.pipe = function(step) {
+			if(!step) {
 				throw new Error("Invalid call to lazypipe().pipe(): no stream specified");
-			} else if(typeof task !== 'function') {
+			} else if(typeof step !== 'function') {
 				throw new Error("Invalid call to lazypipe().pipe(): argument is not a function.\n    Did you call the function directly? (e.g.: pipe(foo()) [incorrect] instead of pipe(foo) [correct])");
 			}
-			return createPipeline(tasks.concat({
-				task: task,
+			return createPipeline(steps.concat({
+				task: step,
 				args: Array.prototype.slice.call(arguments, 1)
 			}));
 		};
