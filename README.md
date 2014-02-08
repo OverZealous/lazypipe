@@ -96,9 +96,9 @@ var pipeline = lazypipe().pipe(jsHint, jsHintOptions);
 gulp.src().pipe(jsHint(jsHintOptions));
 ```
 
-### `lazypipe()()`  *"create"*
+### `lazypipe()()`  *"build"*
 
-Calling the result of `pipe()` as a function creates a pipeline at that time.  This can be used multiple times, and can even be called if the lazypipe was used to create different pipelines.
+Calling the result of `pipe()` as a function builds the pipeline at that time.  This can be used multiple times, and can even be called if the lazypipe was used to create different pipelines.
 
 It returns a stream created using `stream-combiner`, where all the internal steps are processed sequentially, and the final result is passed on.
 
