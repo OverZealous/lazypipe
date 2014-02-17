@@ -1,7 +1,6 @@
-![status](https://secure.travis-ci.org/OverZealous/lazypipe.png?branch=master)
+# lazypipe
 
-lazypipe
-=======
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 Lazypipe allows you to create an immutable, lazily-initialized pipeline.  It's designed to be used in an environment where you want to reuse partial pipelines, such as with [gulp](http://gulpjs.com).
 
@@ -9,8 +8,7 @@ This module returns a function that can be used to start building a lazypipe.  I
 
 Once the partial pipeline is ready to use, call the last result from `.pipe()` directly as a function (e.g.: `.pipe()()`).
 
-Usage
------
+## Usage
 
 Install using:
 
@@ -73,8 +71,7 @@ var baz = lazypipe().pipe(streamD).pipe(foo).pipe(streamE);
 
 ```
 
-API
----
+## API
 
 ### `lazypipe()`
 
@@ -102,29 +99,23 @@ Calling the result of `pipe()` as a function builds the pipeline at that time.  
 
 It returns a stream created using `stream-combiner`, where all the internal steps are processed sequentially, and the final result is passed on.
 
+## Help Support This Project
 
-LICENSE
--------
+If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gittip][gittip-url]!
 
-(MIT License)
+[![Support via Gittip][gittip-image]][gittip-url]
 
-Copyright (c) 2014 [Phil DeJarnett](http://overzealous.com)
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+## LICENSE
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[npm-url]: https://npmjs.org/package/lazypipe
+[npm-image]: https://badge.fury.io/js/lazypipe.png
+
+[travis-url]: http://travis-ci.org/OverZealous/lazypipe
+[travis-image]: https://secure.travis-ci.org/OverZealous/lazypipe.png?branch=master
+
+
+[gittip-url]: https://www.gittip.com/OverZealous/
+[gittip-image]: https://raw2.github.com/OverZealous/gittip-badge/0.1.2/dist/gittip.png
