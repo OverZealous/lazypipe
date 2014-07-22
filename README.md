@@ -71,7 +71,7 @@ var baz = lazypipe().pipe(streamD).pipe(foo).pipe(streamE);
 
 ```
 
-## using with argument functions like [gulp-if](https://github.com/robrich/gulp-if)
+### Using with more complex function arguments (such as [gulp-if](https://github.com/robrich/gulp-if))
 
 Lazypipe assumes that all function parameters are static, gulp-if arguments need to be instantiated inside each lazypipe.  This difference can be easily solved by passing a function on the lazypipe step
 
