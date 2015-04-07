@@ -79,6 +79,7 @@ Lazypipe assumes that all function parameters are static, gulp-if arguments need
 var gulpif = require('gulp-if');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 
 var compressing = false;
 
@@ -88,6 +89,8 @@ var jsChannel = lazypipe()
   .pipe(jshint.reporter)
   // adding a step with an argument
   .pipe(jshint.reporter, 'fail')
+  // adding a step with multiple arguments
+  .pipe(concat, 'bundle.js', {newLine: ';'})
   // you can't say: .pipe(gulpif, compressing, uglify)
   // because uglify needs to be instantiated separately in each lazypipe instance
   // you can say this instead:
@@ -113,12 +116,12 @@ gulp.task('scripts', function () {
 
 Initializes a lazypipe.  Returns a function that can be used to create the pipeline.  The returned function has a function (`pipe`) which can be used to create new lazypipes with an additional step.
 
-### `lazypipe().pipe(fn, [args...])`
+### `lazypipe().pipe(fn[, arg1[, arg2[, ...]]])`
 
 Creates a new lazy pipeline with all the previous steps, and the new step added to the end.  Returns the new lazypipe.
 
 * `fn` - a stream creation function to call when the pipeline is created later.  You can either provide existing functions (such as gulp plugins), or provide your own custom functions if you want to manipulate the stream before creation.
-* `args` - Any remaining arguments are saved and passed into `fn` when the pipeline is created.
+* `arg1, arg2, ...` - Any remaining arguments are saved and passed into `fn` when the pipeline is created.
 
 The arguments allows you to pass in configuration arguments when the pipeline is created, like this:
 
