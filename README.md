@@ -1,6 +1,6 @@
 # lazypipe
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Support via Gratipay][gratipay-image]][gratipay-url]
 
 Lazypipe allows you to create an immutable, lazily-initialized pipeline.  It's designed to be used in an environment where you want to reuse partial pipelines, such as with [gulp](http://gulpjs.com).
 
@@ -140,9 +140,9 @@ It returns a stream created using `stream-combiner`, where all the internal step
 
 ## Help Support This Project
 
-If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gittip][gittip-url]!
+If you'd like to support this and other OverZealous Creations (Phil DeJarnett) projects, [donate via Gratipay][gratipay-url]!
 
-[![Support via Gittip][gittip-image]][gittip-url]
+[![Support via Gratipay][gratipay-image]][gratipay-url]
 
 
 ## LICENSE
@@ -156,5 +156,5 @@ If you'd like to support this and other OverZealous Creations (Phil DeJarnett) p
 [travis-image]: https://secure.travis-ci.org/OverZealous/lazypipe.png?branch=master
 
 
-[gittip-url]: https://www.gittip.com/OverZealous/
-[gittip-image]: https://raw2.github.com/OverZealous/gittip-badge/0.1.2/dist/gittip.png
+[gratipay-url]: https://www.gratipay.com/OverZealous/
+[gratipay-image]: https://img.shields.io/gratipay/OverZealous.svg
