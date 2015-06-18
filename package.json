@@ -41,10 +41,5 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/OverZealous/lazypipe/raw/master/LICENSE"
-    }
-  ]
+  "licenses": "MIT"
 }
