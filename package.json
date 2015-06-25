@@ -25,12 +25,12 @@
     "gulp"
   ],
   "dependencies": {
-    "stream-combiner": "*"
+    "stream-combiner2": "*"
   },
   "devDependencies": {
     "mocha": "*",
     "should": "*",
-    "event-stream": "~3.1.0"
+    "through2": "^2.0.0"
   },
   "directories": {
     "test": "test"

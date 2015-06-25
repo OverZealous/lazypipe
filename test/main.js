@@ -45,7 +45,7 @@ describe('lazypipe', function() {
 			pipelineInstance.on.should.be.a.Function;
 			stream1.data.should.have.length(0);
 
-			pipelineInstance.write(1);
+			pipelineInstance.write('1');
 			stream1.data.should.eql([1]);
 			pipelineInstance.end();
 		});
@@ -62,7 +62,7 @@ describe('lazypipe', function() {
 			stream2.data.should.have.length(0);
 			stream3.data.should.have.length(0);
 
-			pipelineInstance.write(1);
+			pipelineInstance.write('1');
 			stream1.data.should.eql([1]);
 			stream2.data.should.eql([2]);
 			stream3.data.should.eql([3]);
@@ -72,9 +72,9 @@ describe('lazypipe', function() {
 		it('should not break existing streams', function() {
 			var pl1 = lazypipe().pipe(stream1).pipe(stream2),
 				pl2 = pl1.pipe(stream3);
-			pl1().write(11);
+			pl1().write('11');
 			stream3.created.should.be.false;
-			pl2().write(21);
+			pl2().write('21');
 			stream1.data.should.eql([11, 21]);
 			stream2.data.should.eql([12, 22]);
 			stream3.data.should.eql([23]);
@@ -85,9 +85,9 @@ describe('lazypipe', function() {
 				pl2 = lazypipe().pipe(stream3).pipe(pl1).pipe(stream4),
 				pl3 = pl1.pipe(stream5);
 
-			pl1().write(11); // s1 -> s2
-			pl2().write(21); // s3 -> s1 -> s2 -> s4
-			pl3().write(31); // s1 -> s2 -> s5
+			pl1().write('11'); // s1 -> s2
+			pl2().write('21'); // s3 -> s1 -> s2 -> s4
+			pl3().write('31'); // s1 -> s2 -> s5
 
 			stream1.data.should.eql([11, 22, 31]);
 			stream2.data.should.eql([12, 23, 32]);
