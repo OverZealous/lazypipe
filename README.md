@@ -8,6 +8,8 @@ This module returns a function that can be used to start building a lazypipe.  I
 
 Once the partial pipeline is ready to use, call the last result from `.pipe()` directly as a function (e.g.: `.pipe()()`).
 
+[Changelog][]
+
 ## Usage
 
 Install using:
@@ -158,3 +160,5 @@ If you'd like to support this and other OverZealous Creations (Phil DeJarnett) p
 
 [gratipay-url]: https://www.gratipay.com/OverZealous/
 [gratipay-image]: https://img.shields.io/gratipay/OverZealous.svg
+
+[Changelog]: https://github.com/OverZealous/lazypipe/blob/master/CHANGELOG.md
