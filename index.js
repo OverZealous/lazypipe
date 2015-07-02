@@ -9,7 +9,7 @@ var validateStep = function(step) {
 			throw new Error("Invalid call to lazypipe().pipe(): no stream creation function specified");
 		} else if(typeof step !== 'function') {
 			throw new Error("Invalid call to lazypipe().pipe(): argument is not a function.\n" +
-				                "    Remember not to call stream creation functions directly! e.g.: pipe(foo), not pipe(foo())");
+				"    Remember not to call stream creation functions directly! e.g.: pipe(foo), not pipe(foo())");
 		}
 	},
 	validateSteps = function(steps) {
@@ -20,18 +20,18 @@ var validateStep = function(step) {
 
 function lazypipe() {
 	var createPipeline = function(steps) {
-		
+
 		var build = function() {
-				validateSteps(steps);
-				return combine.apply(null, steps.map(function(t) {
-					return t.task.apply(null, t.args);
-				}));
-			};
-		
+			validateSteps(steps);
+			return combine.apply(null, steps.map(function(t) {
+				return t.task.apply(null, t.args);
+			}));
+		};
+
 		build.appendStepsTo = function(otherSteps) {
 			return otherSteps.concat(steps);
 		};
-		
+
 		build.pipe = function(step) {
 			validateStep(step);
 			if(step.appendStepsTo) {
@@ -44,10 +44,10 @@ function lazypipe() {
 				}));
 			}
 		};
-		
+
 		return build;
 	};
-	
+
 	return createPipeline([]);
 }
 
