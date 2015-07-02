@@ -1,18 +1,17 @@
-var util = require('util'),
-	through2 = require('through2');
+var es = require('event-stream'),
+	util = require('util');
 
 module.exports = function(error) {
 	var data = [],
 		createStream = function() {
 			createStream.created = true;
-			return through2(function(chunk, enc, cb) {
+			return es.map(function(d, cb) {
 				createStream.created = true;
-				var num = parseInt(chunk.toString());
-				data.push(num);
+				data.push(d);
 				if(error) {
 					cb('error');
 				} else {
-					cb(null, (num + 1).toString());
+					cb(null, d + 1);
 				}
 			});
 		};

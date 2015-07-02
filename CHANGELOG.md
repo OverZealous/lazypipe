@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Shoot, reverted that.
+
 ## 1.0.0
 
 - Upgraded to Streams 2 thanks to @rjferguson21

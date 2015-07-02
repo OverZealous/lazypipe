@@ -25,12 +25,12 @@
     "gulp"
   ],
   "dependencies": {
-    "stream-combiner2": "*"
+    "stream-combiner": "*"
   },
   "devDependencies": {
     "mocha": "*",
     "should": "*",
-    "through2": "^2.0.0"
+    "event-stream": "~3.1.0"
   },
   "directories": {
     "test": "test"
@@ -41,5 +41,5 @@
   "engines": {
     "node": ">= 0.8.0"
   },
-  "licenses": "MIT"
+  "license": "MIT"
 }

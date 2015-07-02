@@ -2,7 +2,7 @@
 
 "use strict";
 
-var combine = require('stream-combiner2');
+var combine = require('stream-combiner');
 
 var validateStep = function(step) {
 		if(!step) {
