@@ -8,3 +8,4 @@ components
 .idea
 temp.txt*
 test
+yarn.lock
