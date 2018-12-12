@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- NPM audit fixes
+
 ## 1.0.1
 
 - Shoot, reverted that.

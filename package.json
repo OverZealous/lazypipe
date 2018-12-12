@@ -28,9 +28,9 @@
     "stream-combiner": "*"
   },
   "devDependencies": {
-    "mocha": "*",
-    "should": "*",
-    "event-stream": "~3.1.0"
+    "event-stream": "3.3.4",
+    "mocha": "^5.2.0",
+    "should": "*"
   },
   "directories": {
     "test": "test"
