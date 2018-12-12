@@ -1,7 +1,7 @@
 {
   "name": "lazypipe",
   "description": "Use to create an immutable, lazily initialized pipeline from a series of streams.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/OverZealous/lazypipe",
   "repository": {
     "type": "git",
